@@ -73,6 +73,24 @@ form.addEventListener('submit', e => {
     })
     .catch(error => console.error('Error!', error.message))
 })
+// Select all tab links and tab contents
+const tabLinks = document.querySelectorAll('.tab-links');
+const tabContents = document.querySelectorAll('.tab-contents');
+
+// Add click event listeners to each tab link
+tabLinks.forEach((tab, index) => {
+    tab.addEventListener('click', () => {
+        // Remove 'active' class from all tab links
+        tabLinks.forEach(link => link.classList.remove('active'));
+        // Remove 'actives' class from all tab contents
+        tabContents.forEach(content => content.classList.remove('actives'));
+
+        // Add 'active' class to the clicked tab link
+        tab.classList.add('active');
+        // Add 'actives' class to the corresponding tab content
+        tabContents[index].classList.add('actives');
+    });
+});
 // skills.forEach(btn => btn.addEventListener('click', function(){
 //     skills.classList.add('active')
 //     experience.classList.remove('active')
